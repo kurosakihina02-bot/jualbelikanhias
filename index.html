@@ -1,0 +1,815 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aquafish Nusantara | Marketplace Ikan Hias</title>
+<meta name="description" content="Marketplace ikan hias, aquascape dan perlengkapan aquarium terpercaya.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue:#073b5c;
+  --aqua:#159bcb;
+  --light:#eaf7fc;
+  --orange:#f5a623;
+  --green:#279b68;
+  --dark:#203342;
+  --gray:#71808c;
+  --white:#fff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Poppins',sans-serif;
+  background:#f6f9fb;color:var(--dark);
+}
+button,input,select{font:inherit}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+.container{width:min(1150px,92%);margin:auto}
+
+/* NAVBAR */
+header{
+  background:white;position:sticky;top:0;z-index:1000;
+  box-shadow:0 3px 15px #073b5c0d;
+}
+.navbar{
+  min-height:75px;display:flex;align-items:center;
+  justify-content:space-between;gap:20px;
+}
+.logo{font-size:22px;font-weight:800;color:var(--blue)}
+.logo span{color:var(--aqua)}
+.logo small{display:block;font-size:9px;letter-spacing:3px;color:var(--gray)}
+.nav-links{display:flex;gap:25px;align-items:center}
+.nav-links a{font-size:13px;font-weight:600}
+.nav-links a:hover{color:var(--aqua)}
+.nav-actions{display:flex;gap:10px;align-items:center}
+.btn{
+  border:0;border-radius:9px;padding:12px 19px;
+  background:var(--aqua);color:white;font-weight:600;
+  transition:.25s;display:inline-block;
+}
+.btn:hover{background:var(--blue);transform:translateY(-2px)}
+.btn-outline{background:white;color:var(--blue);border:1px solid #d9e5eb}
+.cart-btn{position:relative;background:var(--blue)}
+.cart-count{
+  position:absolute;right:-7px;top:-8px;
+  background:var(--orange);color:#222;
+  width:21px;height:21px;border-radius:50%;
+  display:grid;place-items:center;font-size:11px;
+}
+.menu-toggle{display:none;background:none;border:0;font-size:25px;color:var(--blue)}
+
+/* HERO */
+.hero{
+  min-height:520px;display:flex;align-items:center;
+  background:
+  linear-gradient(90deg,rgba(3,31,51,.95),rgba(3,31,51,.65),rgba(3,31,51,.15)),
+  url('https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=1800&q=85') center/cover;
+  color:white;
+}
+.hero-content{max-width:650px;padding:90px 0}
+.eyebrow{
+  display:inline-block;background:#159bcb30;color:#83e4ff;
+  padding:8px 15px;border-radius:30px;font-size:12px;
+  border:1px solid #159bcb70;margin-bottom:20px;
+}
+.hero h1{font-size:clamp(36px,6vw,64px);line-height:1.12;margin-bottom:20px}
+.hero h1 span{color:#56d4f4}
+.hero p{color:#dceaf1;line-height:1.9;font-size:14px;max-width:540px}
+.hero-buttons{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.hero .btn-outline{background:transparent;color:white;border-color:white}
+.hero .btn-outline:hover{background:white;color:var(--blue)}
+.hero-note{margin-top:35px;font-size:12px;color:#d2e9f1}
+
+/* FEATURES */
+.features{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:15px;margin-top:-35px;position:relative;
+}
+.feature{
+  background:white;padding:22px 15px;border-radius:13px;
+  box-shadow:0 8px 25px #073b5c12;text-align:center;
+}
+.feature .icon{font-size:29px;margin-bottom:8px}
+.feature h3{font-size:13px;margin-bottom:5px}
+.feature p{font-size:11px;color:var(--gray)}
+
+/* SECTION */
+section{padding:75px 0}
+.section-heading{text-align:center;margin-bottom:35px}
+.section-heading .tag{color:var(--aqua);font-weight:700;font-size:12px;letter-spacing:2px}
+.section-heading h2{font-size:30px;color:var(--blue);margin:8px 0}
+.section-heading p{font-size:13px;color:var(--gray)}
+
+/* CATEGORIES */
+.categories{
+ display:grid;grid-template-columns:repeat(6,1fr);gap:15px;
+}
+.category{
+ background:white;padding:22px 10px;text-align:center;
+ border-radius:13px;border:1px solid #e9eff3;
+ transition:.3s;cursor:pointer;
+}
+.category:hover,.category.active{
+ transform:translateY(-5px);border-color:var(--aqua);
+ box-shadow:0 8px 20px #159bcb20;
+}
+.category .emoji{font-size:36px;margin-bottom:10px}
+.category h3{font-size:12px;color:var(--blue)}
+
+/* PRODUCTS */
+.products-section{background:white}
+.product-tools{
+ display:flex;justify-content:space-between;gap:12px;
+ flex-wrap:wrap;margin-bottom:25px;
+}
+.search-box{flex:1;min-width:220px;position:relative}
+.search-box input,.product-tools select{
+ width:100%;padding:13px 15px;border:1px solid #dce5eb;
+ border-radius:9px;background:#f8fbfc;outline:none;
+}
+.search-box input:focus{border-color:var(--aqua)}
+.product-tools select{width:190px}
+.product-grid{
+ display:grid;grid-template-columns:repeat(4,1fr);gap:22px;
+}
+.product-card{
+ background:white;border:1px solid #e9eff3;
+ border-radius:14px;overflow:hidden;transition:.3s;
+}
+.product-card:hover{
+ transform:translateY(-6px);
+ box-shadow:0 12px 30px #073b5c15;
+}
+.product-image{
+ height:190px;position:relative;overflow:hidden;
+ background:#eaf7fc;
+}
+.product-image img{
+ width:100%;height:100%;object-fit:cover;
+ transition:.4s;
+}
+.product-card:hover .product-image img{transform:scale(1.07)}
+.product-badge{
+ position:absolute;top:12px;left:12px;
+ background:var(--green);color:white;padding:5px 10px;
+ font-size:10px;border-radius:20px;
+}
+.product-info{padding:16px}
+.product-info small{color:var(--aqua);font-size:11px}
+.product-info h3{font-size:14px;margin:6px 0}
+.product-info p{font-size:11px;color:var(--gray);margin-bottom:12px}
+.price{font-size:18px;color:var(--blue);font-weight:800}
+.product-bottom{
+ display:flex;align-items:center;justify-content:space-between;
+ margin-top:13px;
+}
+.add-btn{
+ background:var(--blue);color:white;border:0;
+ padding:9px 13px;border-radius:8px;font-size:11px;
+}
+.add-btn:hover{background:var(--aqua)}
+.empty{text-align:center;grid-column:1/-1;padding:35px;color:var(--gray)}
+
+/* PROMO */
+.promo{
+ background:linear-gradient(120deg,#073b5c,#159bcb);
+ border-radius:20px;padding:45px;color:white;
+ display:flex;align-items:center;justify-content:space-between;
+ gap:20px;overflow:hidden;
+}
+.promo h2{font-size:29px;margin-bottom:10px}
+.promo p{font-size:13px;color:#e3f6fc;line-height:1.8}
+.promo .btn{background:var(--orange);color:#243441;margin-top:20px}
+
+/* AQUASCAPE */
+.aqua-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.aqua-card{
+ background:white;border-radius:14px;overflow:hidden;
+ box-shadow:0 5px 20px #073b5c0b;
+}
+.aqua-card img{width:100%;height:190px;object-fit:cover}
+.aqua-card div{padding:20px}
+.aqua-card h3{font-size:16px;color:var(--blue);margin-bottom:8px}
+.aqua-card p{font-size:12px;color:var(--gray);line-height:1.8}
+
+/* GUARANTEE */
+.guarantee{
+ background:#eaf7fc;border-radius:18px;padding:35px;
+ display:grid;grid-template-columns:1fr 1fr;gap:30px;
+ align-items:center;
+}
+.guarantee h2{color:var(--blue);font-size:26px;margin-bottom:12px}
+.guarantee p{font-size:13px;line-height:1.9;color:#5d7180}
+.guarantee ul{list-style:none;margin-top:15px}
+.guarantee li{font-size:12px;margin:12px 0}
+.guarantee li::before{content:"✓";color:var(--green);font-weight:bold;margin-right:10px}
+
+/* NEWSLETTER */
+.newsletter{text-align:center;background:var(--blue);color:white;padding:55px 20px}
+.newsletter h2{font-size:27px;margin-bottom:10px}
+.newsletter p{font-size:13px;color:#c8e0ed;margin-bottom:22px}
+.newsletter form{display:flex;max-width:450px;margin:auto;gap:8px}
+.newsletter input{flex:1;min-width:0;padding:13px;border-radius:8px;border:0;outline:none}
+.newsletter button{background:var(--orange);color:#222}
+
+/* FOOTER */
+footer{background:#092b40;color:white;padding:50px 0 20px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:35px}
+footer h3{margin-bottom:15px;font-size:16px}
+footer p,footer a{font-size:12px;color:#bdd0db;line-height:2}
+footer a{display:block}
+footer a:hover{color:#55d4f4}
+.copyright{
+ text-align:center;border-top:1px solid #ffffff20;
+ padding-top:20px;margin-top:35px;font-size:11px;color:#9fb6c4;
+}
+
+/* CART DRAWER */
+.overlay{
+ position:fixed;inset:0;background:#001b2c90;
+ z-index:2000;display:none;
+}
+.overlay.show{display:block}
+.cart-drawer{
+ position:absolute;right:0;top:0;height:100%;
+ width:min(420px,100%);background:white;
+ padding:25px;overflow-y:auto;
+ transform:translateX(100%);transition:.3s;
+}
+.overlay.show .cart-drawer{transform:translateX(0)}
+.cart-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}
+.cart-header button{background:none;border:0;font-size:25px}
+.cart-item{
+ display:flex;justify-content:space-between;gap:10px;
+ padding:15px 0;border-bottom:1px solid #e8edf0;
+}
+.cart-item h4{font-size:13px}
+.cart-item p{font-size:12px;color:var(--aqua);margin-top:5px}
+.cart-item button{border:0;background:none;color:#d44}
+.cart-total{
+ display:flex;justify-content:space-between;
+ font-weight:700;margin:25px 0;
+}
+.checkout{width:100%}
+.toast{
+ position:fixed;bottom:25px;left:50%;transform:translateX(-50%);
+ background:var(--blue);color:white;padding:13px 20px;
+ border-radius:10px;z-index:3000;font-size:12px;
+ opacity:0;pointer-events:none;transition:.3s;
+}
+.toast.show{opacity:1}
+@media(max-width:900px){
+ .product-grid{grid-template-columns:repeat(2,1fr)}
+ .categories{grid-template-columns:repeat(3,1fr)}
+ .features{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:650px){
+ .navbar{min-height:65px}
+ .menu-toggle{display:block}
+ .nav-links{
+  display:none;position:absolute;top:65px;left:0;
+  width:100%;background:white;padding:20px;
+  flex-direction:column;align-items:flex-start;
+  box-shadow:0 8px 15px #0001;
+ }
+ .nav-links.open{display:flex}
+ .nav-actions .btn-outline{display:none}
+ .hero{min-height:480px}
+ .hero-content{padding:70px 0}
+ .hero h1{font-size:39px}
+ section{padding:55px 0}
+ .section-heading h2{font-size:24px}
+ .categories{grid-template-columns:repeat(3,1fr);gap:9px}
+ .category{padding:16px 5px}
+ .category .emoji{font-size:28px}
+ .product-grid{gap:12px}
+ .product-image{height:145px}
+ .product-info{padding:11px}
+ .product-info h3{font-size:12px}
+ .price{font-size:15px}
+ .add-btn{padding:8px;font-size:10px}
+ .promo{padding:30px 22px;display:block}
+ .promo h2{font-size:24px}
+ .aqua-grid{grid-template-columns:1fr}
+ .guarantee{grid-template-columns:1fr;padding:25px}
+ .footer-grid{grid-template-columns:1fr;gap:25px}
+ .newsletter form{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="container navbar">
+  <a href="#" class="logo">🐠 AQUAFISH<span>.</span>
+   <small>NUSANTARA</small>
+  </a>
+
+  <nav class="nav-links" id="navLinks">
+   <a href="#home">Beranda</a>
+   <a href="#kategori">Kategori</a>
+   <a href="#produk">Produk</a>
+   <a href="#aquascape">Aquascape</a>
+   <a href="#tentang">Tentang</a>
+   <a href="#kontak">Kontak</a>
+  </nav>
+
+  <div class="nav-actions">
+   <button class="btn btn-outline" onclick="openCart()">
+    🛒 Keranjang <span id="cartCount">0</span>
+   </button>
+   <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  </div>
+ </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+ <div class="container">
+  <div class="hero-content">
+   <span class="eyebrow">🐠 MARKETPLACE IKAN HIAS INDONESIA</span>
+   <h1>EXPLORE THE BEAUTY <span>BENEATH THE WATER.</span></h1>
+   <p>
+    Temukan koleksi ikan hias terbaik, perlengkapan aquarium,
+    dan kebutuhan aquascape. Ciptakan keindahan dunia bawah air
+    bersama Aquafish Nusantara.
+   </p>
+   <div class="hero-buttons">
+    <a href="#produk" class="btn">Belanja Sekarang →</a>
+    <a href="#kategori" class="btn btn-outline">Jelajahi Kategori</a>
+   </div>
+   <div class="hero-note">
+    ✓ Koleksi pilihan &nbsp; ✓ Konsultasi mudah &nbsp; ✓ Layanan pengiriman
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- FEATURES -->
+<div class="container features">
+ <div class="feature">
+  <div class="icon">🐟</div>
+  <h3>Koleksi Pilihan</h3>
+  <p>Beragam ikan hias berkualitas</p>
+ </div>
+ <div class="feature">
+  <div class="icon">🚚</div>
+  <h3>Pengiriman Terencana</h3>
+  <p>Pengiriman sesuai layanan tersedia</p>
+ </div>
+ <div class="feature">
+  <div class="icon">🛡️</div>
+  <h3>Garansi DOA</h3>
+  <p>Syarat klaim transparan</p>
+ </div>
+ <div class="feature">
+  <div class="icon">💬</div>
+  <h3>Konsultasi</h3>
+  <p>Hubungi penjual dengan mudah</p>
+ </div>
+</div>
+
+<!-- KATEGORI -->
+<section id="kategori">
+ <div class="container">
+  <div class="section-heading">
+   <span class="tag">JELAJAHI KOLEKSI</span>
+   <h2>Kategori Ikan Hias</h2>
+   <p>Pilih ikan favorit untuk mempercantik aquarium Anda.</p>
+  </div>
+
+  <div class="categories">
+   <div class="category active" onclick="filterCategory('Semua',this)">
+    <div class="emoji">🐠</div><h3>Semua Ikan</h3>
+   </div>
+   <div class="category" onclick="filterCategory('Cupang',this)">
+    <div class="emoji">🐟</div><h3>Cupang</h3>
+   </div>
+   <div class="category" onclick="filterCategory('Discus',this)">
+    <div class="emoji">🐡</div><h3>Discus</h3>
+   </div>
+   <div class="category" onclick="filterCategory('Guppy',this)">
+    <div class="emoji">🐠</div><h3>Guppy</h3>
+   </div>
+   <div class="category" onclick="filterCategory('Koi',this)">
+    <div class="emoji">🎏</div><h3>Koi</h3>
+   </div>
+   <div class="category" onclick="filterCategory('Predator',this)">
+    <div class="emoji">🦈</div><h3>Predator</h3>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- PRODUK -->
+<section class="products-section" id="produk">
+ <div class="container">
+  <div class="section-heading">
+   <span class="tag">PILIHAN TERBAIK</span>
+   <h2>Produk Unggulan</h2>
+   <p>Temukan koleksi ikan hias favorit Anda.</p>
+  </div>
+
+  <div class="product-tools">
+   <div class="search-box">
+    <input type="search" id="searchInput"
+     placeholder="🔍 Cari ikan hias favorit..."
+     oninput="renderProducts()">
+   </div>
+   <select id="sortSelect" onchange="renderProducts()">
+    <option value="default">Urutkan Produk</option>
+    <option value="low">Harga Terendah</option>
+    <option value="high">Harga Tertinggi</option>
+    <option value="name">Nama A-Z</option>
+   </select>
+  </div>
+
+  <div class="product-grid" id="productGrid"></div>
+ </div>
+</section>
+
+<!-- PROMO -->
+<section>
+ <div class="container">
+  <div class="promo">
+   <div>
+    <span class="eyebrow">SPECIAL COLLECTION</span>
+    <h2>Ciptakan Aquarium Impianmu!</h2>
+    <p>Lengkapi aquarium dengan ikan hias dan perlengkapan pilihan.</p>
+    <a href="#aquascape" class="btn">Jelajahi Sekarang →</a>
+   </div>
+   <div style="font-size:100px">🌊🐠</div>
+  </div>
+ </div>
+</section>
+
+<!-- AQUASCAPE -->
+<section id="aquascape">
+ <div class="container">
+  <div class="section-heading">
+   <span class="tag">LENGKAPI AQUARIUM</span>
+   <h2>Aquascape & Perlengkapan</h2>
+   <p>Semua kebutuhan untuk menciptakan ekosistem aquarium.</p>
+  </div>
+
+  <div class="aqua-grid">
+   <div class="aqua-card">
+    <img src="https://images.unsplash.com/photo-1546026423-cc4642628d2b?auto=format&fit=crop&w=700&q=80" alt="Aquarium">
+    <div><h3>🐟 Aquarium</h3>
+    <p>Berbagai pilihan aquarium untuk mempercantik ruangan Anda.</p></div>
+   </div>
+   <div class="aqua-card">
+    <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=700&q=80" alt="Perlengkapan air">
+    <div><h3>🌿 Tanaman Aquascape</h3>
+    <p>Tanaman air untuk menciptakan ekosistem alami.</p></div>
+   </div>
+   <div class="aqua-card">
+    <img src="https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=700&q=80" alt="Ikan hias">
+    <div><h3>⚙️ Perlengkapan</h3>
+    <p>Filter, lampu, pompa, pakan, dan kebutuhan aquarium lainnya.</p></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- TENTANG -->
+<section id="tentang">
+ <div class="container">
+  <div class="guarantee">
+   <div>
+    <span class="tag">BELANJA LEBIH TENANG</span>
+    <h2>Komitmen Kami untuk Pecinta Ikan Hias</h2>
+    <p>
+     Aquafish Nusantara hadir sebagai tempat untuk menemukan
+     ikan hias pilihan dengan informasi produk yang jelas,
+     konsultasi mudah, dan proses transaksi yang transparan.
+    </p>
+   </div>
+   <div>
+    <ul>
+     <li>Informasi kondisi dan ukuran ikan.</li>
+     <li>Foto dan video produk asli dari penjual.</li>
+     <li>Konsultasi sebelum melakukan pembelian.</li>
+     <li>Informasi pengiriman khusus ikan hidup.</li>
+     <li>Kebijakan garansi DOA yang jelas.</li>
+    </ul>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="newsletter">
+ <div class="container">
+  <h2>Gabung Komunitas Aquafish!</h2>
+  <p>Dapatkan informasi koleksi ikan terbaru dan tips perawatan aquarium.</p>
+  <form onsubmit="subscribe(event)">
+   <input type="email" id="emailInput" placeholder="Masukkan email Anda" required>
+   <button class="btn" type="submit">Berlangganan</button>
+  </form>
+ </div>
+</div>
+
+<!-- FOOTER -->
+<footer id="kontak">
+ <div class="container">
+  <div class="footer-grid">
+   <div>
+    <h3>🐠 AQUAFISH NUSANTARA</h3>
+    <p>
+     Marketplace ikan hias, aquascape, dan perlengkapan aquarium.
+     Temukan keindahan dunia bawah air bersama kami.
+    </p>
+   </div>
+   <div>
+    <h3>Navigasi</h3>
+    <a href="#home">Beranda</a>
+    <a href="#kategori">Kategori</a>
+    <a href="#produk">Produk</a>
+    <a href="#tentang">Tentang Kami</a>
+   </div>
+   <div>
+    <h3>Hubungi Kami</h3>
+    <a href="#" onclick="contactWA()">WhatsApp</a>
+    <a href="mailto:info@aquafish.id">Email</a>
+    <a href="#kontak">Informasi & Bantuan</a>
+   </div>
+  </div>
+  <div class="copyright">
+   © 2026 Aquafish Nusantara. All Rights Reserved.
+  </div>
+ </div>
+</footer>
+
+<!-- CART -->
+<div class="overlay" id="overlay" onclick="outsideClose(event)">
+ <div class="cart-drawer">
+  <div class="cart-header">
+   <h2>🛒 Keranjang Belanja</h2>
+   <button onclick="closeCart()">×</button>
+  </div>
+  <div id="cartItems"></div>
+  <div class="cart-total">
+   <span>Total</span>
+   <span id="cartTotal">Rp0</span>
+  </div>
+  <button class="btn checkout" onclick="checkout()">
+   Checkout via WhatsApp →
+  </button>
+  <p style="font-size:10px;color:#71808c;margin-top:12px">
+   Ongkir dan kesiapan pengiriman ikan hidup akan dikonfirmasi penjual.
+  </p>
+ </div>
+</div>
+
+<div class="toast" id="toast">Produk berhasil ditambahkan!</div>
+
+<script>
+/* DATA PRODUK */
+const products = [
+ {
+  id:1,name:"Cupang Halfmoon Premium",category:"Cupang",
+  price:45000,size:"M",water:"Air tawar",
+  image:"https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=600&q=80",
+  badge:"Terlaris"
+ },
+ {
+  id:2,name:"Discus Red Melon",category:"Discus",
+  price:125000,size:"M",water:"Air tawar",
+  image:"https://images.unsplash.com/photo-1530053969600-caed2596d242?auto=format&fit=crop&w=600&q=80",
+  badge:"Premium"
+ },
+ {
+  id:3,name:"Guppy Fancy Blue",category:"Guppy",
+  price:25000,size:"S",water:"Air tawar",
+  image:"https://images.unsplash.com/photo-1535591273668-578e31182c4f?auto=format&fit=crop&w=600&q=80",
+  badge:"Favorit"
+ },
+ {
+  id:4,name:"Koi Kohaku",category:"Koi",
+  price:175000,size:"L",water:"Air tawar",
+  image:"https://images.unsplash.com/photo-1559827260-dc66d52bef19?auto=format&fit=crop&w=600&q=80",
+  badge:"Pilihan"
+ },
+ {
+  id:5,name:"Ikan Arwana Silver",category:"Predator",
+  price:350000,size:"L",water:"Air tawar",
+  image:"https://images.unsplash.com/photo-1510130387422-82bed34b37e9?auto=format&fit=crop&w=600&q=80",
+  badge:"Premium"
+ },
+ {
+  id:6,name:"Cupang Crowntail",category:"Cupang",
+  price:55000,size:"M",water:"Air tawar",
+  image:"https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=600&q=80",
+  badge:"Baru"
+ },
+ {
+  id:7,name:"Guppy Cobra",category:"Guppy",
+  price:35000,size:"S",water:"Air tawar",
+  image:"https://images.unsplash.com/photo-1535591273668-578e31182c4f?auto=format&fit=crop&w=600&q=80",
+  badge:"Favorit"
+ },
+ {
+  id:8,name:"Discus Blue Diamond",category:"Discus",
+  price:150000,size:"M",water:"Air tawar",
+  image:"https://images.unsplash.com/photo-1530053969600-caed2596d242?auto=format&fit=crop&w=600&q=80",
+  badge:"Premium"
+ }
+];
+
+let selectedCategory="Semua";
+let cart=[];
+
+/* FORMAT RUPIAH */
+function rupiah(number){
+ return new Intl.NumberFormat("id-ID",{
+  style:"currency",currency:"IDR",
+  maximumFractionDigits:0
+ }).format(number);
+}
+
+/* TAMPILKAN PRODUK */
+function renderProducts(){
+ const grid=document.getElementById("productGrid");
+ const search=document.getElementById("searchInput").value.toLowerCase();
+ const sort=document.getElementById("sortSelect").value;
+
+ let data=products.filter(p=>{
+  const categoryMatch=selectedCategory==="Semua"||
+    p.category===selectedCategory;
+  const searchMatch=p.name.toLowerCase().includes(search);
+  return categoryMatch&&searchMatch;
+ });
+
+ if(sort==="low")data.sort((a,b)=>a.price-b.price);
+ if(sort==="high")data.sort((a,b)=>b.price-a.price);
+ if(sort==="name")data.sort((a,b)=>a.name.localeCompare(b.name));
+
+ if(data.length===0){
+  grid.innerHTML='<div class="empty">Produk tidak ditemukan.</div>';
+  return;
+ }
+
+ grid.innerHTML=data.map(p=>`
+  <article class="product-card">
+   <div class="product-image">
+    <img src="${p.image}" alt="${p.name}" loading="lazy"
+      onerror="this.src='https://placehold.co/600x400/eaf7fc/073b5c?text=Aquafish'">
+    <span class="product-badge">${p.badge}</span>
+   </div>
+   <div class="product-info">
+    <small>${p.category} • ${p.water}</small>
+    <h3>${p.name}</h3>
+    <p>Ukuran ${p.size} • Informasi kondisi hubungi seller</p>
+    <div class="product-bottom">
+     <span class="price">${rupiah(p.price)}</span>
+     <button class="add-btn" onclick="addToCart(${p.id})">+ Keranjang</button>
+    </div>
+   </div>
+  </article>
+ `).join("");
+}
+
+/* FILTER KATEGORI */
+function filterCategory(category,element){
+ selectedCategory=category;
+ document.querySelectorAll(".category").forEach(el=>el.classList.remove("active"));
+ element.classList.add("active");
+ renderProducts();
+ document.getElementById("produk").scrollIntoView({behavior:"smooth"});
+}
+
+/* KERANJANG */
+function addToCart(id){
+ const product=products.find(p=>p.id===id);
+ const existing=cart.find(p=>p.id===id);
+
+ if(existing)existing.qty++;
+ else cart.push({...product,qty:1});
+
+ updateCart();
+ showToast("Produk berhasil ditambahkan!");
+}
+
+function updateCart(){
+ const count=cart.reduce((sum,p)=>sum+p.qty,0);
+ document.getElementById("cartCount").textContent=count;
+
+ const items=document.getElementById("cartItems");
+
+ if(cart.length===0){
+  items.innerHTML='<p style="text-align:center;color:#71808c;padding:30px">Keranjang masih kosong 🛒</p>';
+ }else{
+  items.innerHTML=cart.map(p=>`
+   <div class="cart-item">
+    <div>
+     <h4>${p.name}</h4>
+     <p>${rupiah(p.price)} × ${p.qty}</p>
+     <div style="display:flex;gap:12px;margin-top:8px">
+      <button onclick="changeQty(${p.id},-1)">−</button>
+      <span>${p.qty}</span>
+      <button onclick="changeQty(${p.id},1)">+</button>
+     </div>
+    </div>
+    <button onclick="removeItem(${p.id})">Hapus</button>
+   </div>
+  `).join("");
+ }
+
+ const total=cart.reduce((sum,p)=>sum+p.price*p.qty,0);
+ document.getElementById("cartTotal").textContent=rupiah(total);
+}
+
+function changeQty(id,amount){
+ const item=cart.find(p=>p.id===id);
+ if(!item)return;
+ item.qty+=amount;
+ if(item.qty<=0)cart=cart.filter(p=>p.id!==id);
+ updateCart();
+}
+
+function removeItem(id){
+ cart=cart.filter(p=>p.id!==id);
+ updateCart();
+}
+
+/* BUKA TUTUP KERANJANG */
+function openCart(){
+ document.getElementById("overlay").classList.add("show");
+}
+function closeCart(){
+ document.getElementById("overlay").classList.remove("show");
+}
+function outsideClose(event){
+ if(event.target.id==="overlay")closeCart();
+}
+
+/* CHECKOUT WHATSAPP */
+const WHATSAPP_NUMBER="6281234567890"; // GANTI DENGAN NOMOR TOKO
+
+function checkout(){
+ if(cart.length===0){
+  showToast("Keranjang masih kosong!");
+  return;
+ }
+
+ let message="Halo Aquafish Nusantara! Saya ingin memesan:%0A%0A";
+ cart.forEach(p=>{
+  message+=`- ${p.name} x ${p.qty} = ${rupiah(p.price*p.qty)}%0A`;
+ });
+
+ const total=cart.reduce((sum,p)=>sum+p.price*p.qty,0);
+ message+=`%0ATotal produk: ${rupiah(total)}%0A`;
+ message+="Mohon informasi stok dan estimasi pengiriman ikan hidup.";
+
+ window.open(
+  `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`,
+  "_blank"
+ );
+}
+
+function contactWA(){
+ window.open(
+  `https://wa.me/${WHATSAPP_NUMBER}?text=Halo%20Aquafish%20Nusantara`,
+  "_blank"
+ );
+}
+
+/* NEWSLETTER DEMO */
+function subscribe(event){
+ event.preventDefault();
+ showToast("Terima kasih telah bergabung!");
+ document.getElementById("emailInput").value="";
+}
+
+/* MENU MOBILE */
+function toggleMenu(){
+ document.getElementById("navLinks").classList.toggle("open");
+}
+document.querySelectorAll(".nav-links a").forEach(link=>{
+ link.addEventListener("click",()=>{
+  document.getElementById("navLinks").classList.remove("open");
+ });
+});
+
+/* NOTIFIKASI */
+let toastTimer;
+function showToast(message){
+ const toast=document.getElementById("toast");
+ toast.textContent=message;
+ toast.classList.add("show");
+ clearTimeout(toastTimer);
+ toastTimer=setTimeout(()=>toast.classList.remove("show"),2500);
+}
+
+/* INISIALISASI */
+renderProducts();
+updateCart();
+</script>
+
+</body>
+</html>
